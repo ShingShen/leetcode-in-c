@@ -19,9 +19,9 @@ int main() {
     list2->next = newNode(3);
     list2->next->next = newNode(4);
 
-    struct ListNode* mergeHead = mergeTwoLists(list1, list2);
+    struct ListNode* mergedList = mergeTwoLists(list1, list2);
 
-    printList(mergeHead);
+    printList(mergedList);
 
     printf("\n");
 

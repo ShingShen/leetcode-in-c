@@ -7,11 +7,11 @@ void printArray(int* nums, int numsSize);
 int main()
 {
     int arr[] = {1, 2, 1};
-    int numsSize = 3;
+    int numsSize = sizeof arr / sizeof* arr;
     int returnSize;
-    int* new_arr = getConcatenation(arr, numsSize, &returnSize);
+    int* newArr = getConcatenation(arr, numsSize, &returnSize);
 
-    printArray(new_arr, 6);
+    printArray(newArr, 6);
 
     return 0;
 }

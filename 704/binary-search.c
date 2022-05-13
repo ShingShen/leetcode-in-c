@@ -3,9 +3,9 @@
 int search(int* nums, int numsSize, int target);
 
 int main() {
-    int arr[] = {2, 7, 11, 15, 23, 56 ,71};
-
-    int targetIdx = search(arr, 7, 15);
+    int arr[] = {2, 7, 11, 15, 23, 56, 71};
+    int arrSize = sizeof arr / sizeof* arr;
+    int targetIdx = search(arr, arrSize, 15);
 
     printf("The target index is: %d\n", targetIdx);
 

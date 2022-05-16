@@ -19,7 +19,7 @@ int main() {
     
     int* returnSize = (int*)malloc(sizeof(int));
     int* res = inorderTraversal(root, returnSize);
-    printf("%d %d %d %d %d", res[0], res[1], res[2], res[3], res[4]);
+    printf("%d %d %d %d %d\n", res[0], res[1], res[2], res[3], res[4]);
     
     return 0;
 }

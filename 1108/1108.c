@@ -1,5 +1,6 @@
 // 1108. Defanging an IP Address
 #include <stdio.h>
+#include <stdlib.h>
 
 char* defangIPaddr(char* address);
 

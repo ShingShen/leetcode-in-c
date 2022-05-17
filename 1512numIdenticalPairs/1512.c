@@ -9,7 +9,7 @@ int main()
     int arrSize = sizeof arr / sizeof *arr;
     int numberOfGoodPairs = numIdenticalPairs(arr, arrSize);
 
-    printf("The number if good pairs: %d\n", numberOfGoodPairs);
+    printf("The number of good pairs: %d\n", numberOfGoodPairs);
 }
 
 int numIdenticalPairs(int* nums, int numsSize)

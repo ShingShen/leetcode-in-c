@@ -10,10 +10,6 @@ int main()
     int colSize = sizeof *arr / sizeof **arr;
     int maxSum = maximumWealth(arr, arrSize, &colSize);
     
-    
-    // printf("arrSize: %d\n", arrSize);
-    // printf("arrSize: %d\n", colSize);
-    
     printf("%d\n", maxSum);
     
     return 0;

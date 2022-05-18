@@ -16,8 +16,8 @@ int main()
 
 int recursionFib(int n)
 {
-    if (n <= 1) return;
-    return recursionFib(n-1) + recursionFib(n-2);
+    if (n <= 1) return n;
+    return recursionFib(n-2) + recursionFib(n-1);
 }
 
 int dpFib(int n)

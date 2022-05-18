@@ -47,7 +47,7 @@ int main() {
 }
 
 int getIndex(int key) {
-    return (key % HASH_SIZE);
+    return (abs(key) % HASH_SIZE);
 }
 
 MyHashMap* myHashMapCreate() {

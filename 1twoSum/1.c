@@ -1,8 +1,7 @@
-/**
- * Note: The returned array must be malloced, assume caller calls free().
- */
-
 // 1. Two Sum
+
+#include <stdio.h>
+#include <stdlib.h>
 
 #define HASH_SIZE 10000
 
@@ -17,7 +16,24 @@ typedef struct {
     int size;
 } MyHashMap;
 
-int getIndex(int key) {
+int* twoSum(int* nums, int numsSize, int target, int* returnSize);
+
+int main() 
+{
+    int arr[] = {7, 2, 13, 5};
+    int numsSize = sizeof arr / sizeof *arr;
+    int target = 15;
+    int* returnSize;
+    
+    int* ans = twoSum(arr, numsSize, target, returnSize);
+    
+    printf("[%d, %d]\n", ans[0], ans[1]);
+    
+    return 0;
+}
+
+int getIndex(int key) 
+{
     return (abs(key) % HASH_SIZE);
 }
 
@@ -100,5 +116,8 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
         myHashMapPut(hashMap, nums[i], i);
     }
     myHashMapFree(hashMap);
+    
+    res[0] = -1;
+    res[1] = -1;
     return res;
 }

@@ -7,6 +7,7 @@ int main() {
     int arrSize = sizeof arr / sizeof* arr;
     int targetIdx = search(arr, arrSize, 15);
 
+    printf("The array size is: %d\n", arrSize);
     printf("The target index is: %d\n", targetIdx);
 
     return 0;

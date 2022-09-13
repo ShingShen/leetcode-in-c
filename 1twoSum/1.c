@@ -2,7 +2,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #define HASH_SIZE 10000
 
@@ -23,7 +22,7 @@ int main()
 {
     int arr[] = {7, 2, 13, 5};
     int numsSize = sizeof arr / sizeof *arr;
-    int target = 15;
+    int target = 18;
     int* returnSize;
     
     int* ans = twoSum(arr, numsSize, target, returnSize);
@@ -73,7 +72,7 @@ void hashMapPut(HashMap* obj, int key, int value)
     return;
 }
 
-bool hashMapGet(HashMap* obj, int key) 
+int hashMapGet(HashMap* obj, int key) 
 {
     int idx = getIdx(key);
     struct HashNode* curList = obj->hashTable[idx];
@@ -84,7 +83,7 @@ bool hashMapGet(HashMap* obj, int key)
         }
         curList = curList->next;
     }
-    return false;
+    return -1;
 }
 
 void hashMapFree(HashMap* obj) 
@@ -108,7 +107,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
     HashMap* hashMap = hashMapCreate();
     int* res = calloc((*returnSize = 2), sizeof(int));
     for (int i = 0; i < numsSize; i++) {
-        if (hashMapGet(hashMap, target - nums[i])) {
+        if (hashMapGet(hashMap, target - nums[i]) != -1) {
             res[0] = hashMapGet(hashMap, target - nums[i]);
             res[1] = i;
             return res;

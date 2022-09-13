@@ -110,7 +110,6 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
         if (hashMapGet(hashMap, target - nums[i]) != -1) {
             res[0] = hashMapGet(hashMap, target - nums[i]);
             res[1] = i;
-            hashMapFree(hashMap);
             return res;
         }
         hashMapPut(hashMap, nums[i], i);

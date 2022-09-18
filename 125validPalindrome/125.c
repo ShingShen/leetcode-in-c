@@ -10,14 +10,14 @@ int main()
 {
     char* str = "aabbaaaaa";
 
-    puts("Solution1:");
+    puts("Solution 1:");
     if(isPalindrome1(str)) {
         puts("str is Palindrome.");
     } else {
         puts("str is not Palindrome.");
     }
 
-    puts("Solution2:");
+    puts("Solution 2:");
     if(isPalindrome2(str)) {
         puts("str is Palindrome.");
     } else {

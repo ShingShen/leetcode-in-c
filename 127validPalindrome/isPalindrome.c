@@ -1,14 +1,24 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
 
-bool isPalindrome(char* s);
+bool isPalindrome1(char* s);
+bool isPalindrome2(char* s);
 
 int main()
 {
     char* str = "aabbaaaaa";
 
-    if(isPalindrome(str)) {
+    puts("Solution1:");
+    if(isPalindrome1(str)) {
+        puts("str is Palindrome.");
+    } else {
+        puts("str is not Palindrome.");
+    }
+
+    puts("Solution2:");
+    if(isPalindrome2(str)) {
         puts("str is Palindrome.");
     } else {
         puts("str is not Palindrome.");
@@ -23,13 +33,26 @@ bool isAlNum(char ch)
     return false;
 }
 
-bool isPalindrome(char* s) {
+bool isPalindrome1(char* s) {
     int l = 0;
     int r = strlen(s)-1;
 
     while(l < r) {
         if(!isAlNum(s[l])) ++l;
         else if(!isAlNum(s[r])) --r;
+        else if((s[l]+32-'a')%32 != (s[r]+32-'a')%32) return false;
+        else { ++l; --r; }
+    }
+    return true;
+}
+
+bool isPalindrome2(char* s) {
+    int l = 0;
+    int r = strlen(s)-1;
+
+    while(l < r) {
+        if(!isalnum(s[l])) ++l;
+        else if(!isalnum(s[r])) --r;
         else if((s[l]+32-'a')%32 != (s[r]+32-'a')%32) return false;
         else { ++l; --r; }
     }

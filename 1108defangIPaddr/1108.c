@@ -13,7 +13,7 @@ int main()
 
 char* defangIPaddr(char* address)
 {
-    char* newAddr = (char*)malloc(30*sizeof(char));
+    char* newAddr = (char*)malloc(sizeof(char)*22);
     int a = 0, b = 0, c = 0, d = 0;
     sscanf(address, "%d.%d.%d.%d", &a, &b, &c, &d);
     sprintf(newAddr, "%d[.]%d[.]%d[.]%d", a, b, c, d);

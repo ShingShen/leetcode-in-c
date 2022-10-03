@@ -1,4 +1,5 @@
 // 2236. Root Equals Sum of Children
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -18,13 +19,7 @@ int main()
     root->left = newNode(4);
     root->right = newNode(6);
 
-    if (checkTree(root)) {
-        puts("true");
-    } else {
-        puts("false");
-    }
-    
-    return 0;
+    return checkTree(root) ? puts("true") : puts("false");
 }
 
 bool checkTree(struct TreeNode* root)

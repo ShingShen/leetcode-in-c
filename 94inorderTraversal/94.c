@@ -9,6 +9,7 @@ struct TreeNode {
 
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
 struct TreeNode* newNode(int newVal);
+int treeSize(struct TreeNode* node);
 
 int main() {
     struct TreeNode* root = newNode(1);
@@ -16,15 +17,16 @@ int main() {
     root->right = newNode(3);
     root->left->left = newNode(4);
     root->left->right = newNode(5);
+    root->right->left = newNode(6);
     int* returnSize = (int*)malloc(sizeof(int));
     int* res = inorderTraversal(root, returnSize);
-    int arrSize = sizeof(*res)+1;
-    printf("Array size is: %d\n", arrSize);
-    printf("Inorder traversal: ");
-    for (int i = 0; i < arrSize; i++) {
+
+    printf("Tree size is: %d\n", treeSize(root));
+    printf("Inorder traversal: [");
+    for (int i = 0; i < treeSize(root); i++) {
         printf(" %d ", res[i]);
     }
-    printf("\n");  
+    printf("]\n");  
     return 0;
 }
 
@@ -48,4 +50,9 @@ struct TreeNode* newNode(int newVal) {
     node->left = NULL;
     node->right = NULL;
     return node;
+}
+
+int treeSize(struct TreeNode* node) {
+    if(!node) return 0;
+    return treeSize(node->left)+treeSize(node->right)+1;
 }

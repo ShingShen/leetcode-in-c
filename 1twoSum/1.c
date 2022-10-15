@@ -17,17 +17,22 @@ typedef struct {
 } HashMap;
 
 int* twoSum(int* nums, int numsSize, int target, int* returnSize);
+void priArr(int* arr, int arrSize);
 
 int main() 
 {
-    int arr[] = {7, 2, 13, 5};
-    int numsSize = sizeof arr / sizeof *arr;
+    int arr[] = {7, 2, 13, 5, 1};
+    int arrSize = sizeof arr / sizeof *arr;
     int target = 18;
     int* returnSize;
     
-    int* ans = twoSum(arr, numsSize, target, returnSize);
+    int* ans = twoSum(arr, arrSize, target, returnSize);
     
-    printf("[%d, %d]\n", ans[0], ans[1]);
+    printf("sizeof(arr) is: %ld\n", sizeof(arr));
+    printf("sizeof(*arr) is: %ld\n", sizeof(*arr));
+    printf("Array size is: %d\n", arrSize);
+    priArr(arr, arrSize);
+    printf("The index of two sum is: [ %d, %d ]\n", ans[0], ans[1]);
     
     return 0;
 }
@@ -119,4 +124,12 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize)
     res[0] = -1;
     res[1] = -1;
     return res;
+}
+
+void priArr(int* arr, int arrSize) {
+    printf("Array is: [");
+    for(int i = 0; i < arrSize; i++) {
+        printf(" %d ", arr[i]);
+    }
+    printf("]\n");
 }

@@ -12,7 +12,7 @@ typedef struct _HashNode {
 } HashNode;
 
 typedef struct {
-    struct HashNode** hashTable;
+    HashNode** hashTable;
     int size;
 } MyHashMap;
 
@@ -122,7 +122,7 @@ void myHashMapFree(MyHashMap* obj) {
     for (int i = 0; i < obj->size; i++) {
         HashNode* curList = obj->hashTable[i];
         while (curList) {
-            struct HashNode* delNode = curList;
+            HashNode* delNode = curList;
             curList = curList->next;
             free(delNode);
         }

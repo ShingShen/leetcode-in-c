@@ -17,6 +17,7 @@ struct TreeNode {
 
 int deepestLeavesSum(struct TreeNode* root);
 struct TreeNode* newNode(int newVal);
+int treeSize(struct TreeNode* node);
 
 int main()
 {
@@ -30,6 +31,7 @@ int main()
     root->right->right->right = newNode(8);
 
     printf("sizeof(TreeNode): %ld bytes\n", sizeof(TreeNode));
+    printf("Tree size is: %d\n", treeSize(root));
     printf("The Deepest leaves sum is: %d\n", deepestLeavesSum(root));
 }
 
@@ -58,4 +60,9 @@ struct TreeNode* newNode(int newVal)
     node->left = NULL;
     node->right = NULL;
     return node;
+}
+
+int treeSize(struct TreeNode* node) {
+    if(!node) return 0;
+    return treeSize(node->left)+treeSize(node->right)+1;
 }

@@ -4,7 +4,7 @@
 struct ListNode {
     int val;
     struct ListNode* next;
-} ListNode;
+};
 
 struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* l2ist);
 struct ListNode* newNode(int key);
@@ -53,7 +53,7 @@ struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2) {
 }
 
 struct ListNode* newNode(int key) {
-    struct ListNode* temp = (struct ListNode*)malloc(sizeof(ListNode));
+    struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode));
     temp->val = key;
     temp->next = NULL;
     return temp;

@@ -5,14 +5,14 @@
 
 #define HASH_SIZE 10000
 
-struct HashNode {
+typedef struct _HashNode {
     int key;
     int val;
-    struct HashNode* next;
-};
+    struct _HashNode* next;
+} HashNode;
 
 typedef struct {
-    struct HashNode** hashTable;
+    HashNode** hashTable;
     int size;
 } HashMap;
 
@@ -40,32 +40,32 @@ int getIdx(int key)
 HashMap* hashMapCreate() 
 {
     HashMap* obj = (HashMap*)calloc(1, sizeof(HashMap));
-    obj->hashTable = (struct HashNode**)calloc(HASH_SIZE, sizeof(struct HashNode*));
+    obj->hashTable = (HashNode**)calloc(HASH_SIZE, sizeof(HashNode*));
     obj->size = HASH_SIZE;
     return obj;
 }
 
-void hashMapPut(HashMap* obj, int key, int value) 
+void hashMapPut(HashMap* obj, int key, int val) 
 {
-    int index = getIdx(key);
-    struct HashNode* curList = obj->hashTable[index];
-    struct HashNode* preNode = NULL;
+    int idx = getIdx(key);
+    HashNode* curList = obj->hashTable[idx];
+    HashNode* preNode = NULL;
     
     while (curList) {
         if (curList->key == key) {
-            curList->val = value;
+            curList->val = val;
             return;
         }
         preNode = curList;
         curList = curList->next;
     }
     
-    struct HashNode* newNode = (struct HashNode*)calloc(1, sizeof(struct HashNode));
+    HashNode* newNode = (HashNode*)calloc(1, sizeof(HashNode));
     newNode->key = key;
-    newNode->val = value;
+    newNode->val = val;
     
-    if (obj->hashTable[index] == NULL) {
-        obj->hashTable[index] = newNode;
+    if (obj->hashTable[idx] == NULL) {
+        obj->hashTable[idx] = newNode;
     } else {
         preNode->next = newNode;
     }
@@ -75,7 +75,7 @@ void hashMapPut(HashMap* obj, int key, int value)
 int hashMapGet(HashMap* obj, int key) 
 {
     int idx = getIdx(key);
-    struct HashNode* curList = obj->hashTable[idx];
+    HashNode* curList = obj->hashTable[idx];
     
     while (curList) {
         if(curList->key == key) {
@@ -89,9 +89,9 @@ int hashMapGet(HashMap* obj, int key)
 void hashMapFree(HashMap* obj) 
 {
     for (int i = 0; i < obj->size; i++) {
-        struct HashNode* curList = obj->hashTable[i];
+        HashNode* curList = obj->hashTable[i];
         while (curList) {
-            struct HashNode* delNode = curList;
+            HashNode* delNode = curList;
             curList = curList->next;
             free(delNode);
         }

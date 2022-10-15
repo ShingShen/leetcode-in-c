@@ -4,7 +4,7 @@
 struct ListNode {
     int val;
     struct ListNode* next;
-} ListNode;
+};
 
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 struct ListNode* newNode(int key);
@@ -32,7 +32,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
     while(l1 || l2 || extraVal) {
         int sum  = (l1 ? l1->val : 0) + (l2 ? l2->val :0) + extraVal;
         extraVal = sum / 10;
-        node->next = malloc(sizeof(ListNode));
+        node->next = malloc(sizeof(struct ListNode));
         node->next->val = sum % 10;
         node->next->next = NULL;
         node = node->next;
@@ -43,7 +43,7 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 }
 
 struct ListNode* newNode(int key) {
-    struct ListNode* tmp = (struct ListNode*)malloc(sizeof(ListNode));
+    struct ListNode* tmp = (struct ListNode*)malloc(sizeof(struct ListNode));
     tmp->val = key;
     tmp->next = NULL;
     return tmp;

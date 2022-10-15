@@ -5,7 +5,7 @@ struct TreeNode {
     int val;
     struct TreeNode* left;
     struct TreeNode* right;
-} TreeNode;
+};
 
 int* inorderTraversal(struct TreeNode* root, int* returnSize);
 struct TreeNode* newNode(int newVal);
@@ -16,7 +16,6 @@ int main() {
     root->right = newNode(3);
     root->left->left = newNode(4);
     root->left->right = newNode(5);
-    
     int* returnSize = (int*)malloc(sizeof(int));
     int* res = inorderTraversal(root, returnSize);
     int arrSize = sizeof(*res)+1;
@@ -44,7 +43,7 @@ int* inorderTraversal(struct TreeNode* root, int* returnSize) {
 }
 
 struct TreeNode* newNode(int newVal) {
-    struct TreeNode* node = (struct TreeNode*)malloc(sizeof(TreeNode));
+    struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
     node->val = newVal;
     node->left = NULL;
     node->right = NULL;

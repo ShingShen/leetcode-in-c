@@ -23,7 +23,7 @@ int main()
 {
     int arr[] = {7, 2, 13, 5, 1};
     int arrSize = sizeof arr / sizeof *arr;
-    int target = 18;
+    int target = 28;
     int* returnSize;
     
     int* ans = twoSum(arr, arrSize, target, returnSize);
@@ -109,17 +109,17 @@ void hashMapFree(HashMap* obj)
 
 int* twoSum(int* nums, int numsSize, int target, int* returnSize)
 {
-    HashMap* hashMap = hashMapCreate();
+    HashMap* idx = hashMapCreate();
     int* res = calloc((*returnSize = 2), sizeof(int));
     for (int i = 0; i < numsSize; i++) {
-        if (hashMapGet(hashMap, target - nums[i]) != -1) {
-            res[0] = hashMapGet(hashMap, target - nums[i]);
+        if (hashMapGet(idx, target - nums[i]) != -1) {
+            res[0] = hashMapGet(idx, target - nums[i]);
             res[1] = i;
             return res;
         }
-        hashMapPut(hashMap, nums[i], i);
+        hashMapPut(idx, nums[i], i);
     }
-    hashMapFree(hashMap);
+    hashMapFree(idx);
     
     res[0] = -1;
     res[1] = -1;

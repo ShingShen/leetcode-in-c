@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define HASH_SIZE 1000000
+#define HASH_SIZE 1000001
 
 typedef struct _HashNode {
     int key;
@@ -16,7 +16,7 @@ typedef struct {
     int size;
 } MyHashMap;
 
-int getIndex(int key);
+int getIdx(int key);
 MyHashMap* myHashMapCreate();
 void myHashMapPut(MyHashMap* obj, int key, int value);
 int myHashMapGet(MyHashMap* obj, int key);
@@ -46,7 +46,7 @@ int main() {
     return 0;
 }
 
-int getIndex(int key) {
+int getIdx(int key) {
     return (abs(key) % HASH_SIZE);
 }
 
@@ -58,34 +58,29 @@ MyHashMap* myHashMapCreate() {
 }
 
 void myHashMapPut(MyHashMap* obj, int key, int value) {
-    int index = getIndex(key);
-    HashNode* curList = obj->hashTable[index];
+    int idx = getIdx(key);
+    HashNode* curList = obj->hashTable[idx];
     HashNode* preNode = NULL;
     
-    while (curList) {
+    if(curList) {
         if (curList->key == key) {
             curList->val = value;
             return;
         }
         preNode = curList;
         curList = curList->next;
-    }
-    
-    HashNode* newNode = (HashNode*)calloc(1, sizeof(HashNode));
-    newNode->key = key;
-    newNode->val = value;
-    
-    if (obj->hashTable[index] == NULL) {
-        obj->hashTable[index] = newNode;
     } else {
-        preNode->next = newNode;
+        HashNode* newNode = (HashNode*)calloc(1, sizeof(HashNode));
+        newNode->key = key;
+        newNode->val = value;
+        obj->hashTable[idx] = newNode;
+        return;
     }
-    return;
 }
 
 int myHashMapGet(MyHashMap* obj, int key) {
-    int index = getIndex(key);
-    HashNode* curList = obj->hashTable[index];
+    int idx = getIdx(key);
+    HashNode* curList = obj->hashTable[idx];
     
     while (curList) {
         if(curList->key == key) {
@@ -97,8 +92,8 @@ int myHashMapGet(MyHashMap* obj, int key) {
 }
 
 void myHashMapRemove(MyHashMap* obj, int key) {
-    int index = getIndex(key);
-    HashNode* curList = obj->hashTable[index];
+    int idx = getIdx(key);
+    HashNode* curList = obj->hashTable[idx];
     HashNode* preNode = NULL;
     
     while(curList) {
@@ -107,7 +102,7 @@ void myHashMapRemove(MyHashMap* obj, int key) {
             if (preNode) {
                 preNode->next = curList->next;
             } else {
-                obj->hashTable[index] = curList->next;
+                obj->hashTable[idx] = curList->next;
             }
             free(delNode);
             return;

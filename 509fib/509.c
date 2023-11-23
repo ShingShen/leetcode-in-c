@@ -22,7 +22,7 @@ int recursionFib(int n)
 
 int dpFib(int n)
 {
-    int f[n+2], i;
+    int f[n + 2], i;
     f[0] = 0;
     f[1] = 1;
     
